@@ -13,12 +13,17 @@ namespace todobackend.Service.Todos
 
         public bool AddTodo(Todo todo)
         {
-            throw new NotImplementedException();
+            _todosDbContext.Todos.Add(todo);
+            _todosDbContext.SaveChanges();
+            return true;
         }
 
-        public bool DelTodo(Todo todo)
+        public bool DelTodo(int id)
         {
-            throw new NotImplementedException();
+            Todo todo = _todosDbContext.Todos.Find(id);
+            _todosDbContext.Todos.Remove(todo);
+            _todosDbContext.SaveChanges();
+            return true;
         }
 
         public List<Todo> GetTodos()
@@ -28,7 +33,9 @@ namespace todobackend.Service.Todos
 
         public bool UpdateTodo(Todo todo)
         {
-            throw new NotImplementedException();
+            _todosDbContext.Todos.Update(todo);
+            _todosDbContext.SaveChanges();
+            return true;
         }
     }
 }
